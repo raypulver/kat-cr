@@ -62,7 +62,9 @@ The information you are probably looking for will be in `results.list`. The prop
 * `size`: The size (in bytes) of the torrent.
 * `votes`: The amount of votes the torrent received on kickass.so
 * `verified`: Whether or not the torrent is verified.
+
 ## License
 MIT. Feel free to modify and distribute.
+
 ## Author
 Raymond Pulver IV
