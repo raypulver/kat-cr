@@ -1,0 +1,25 @@
+{
+  "name": "kickass-so",
+  "version": "0.1.0",
+  "description": "A library and CLI app for searching kickass.so",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "bin": {
+    "kickass": "./bin/search.js"
+  },
+  "author": "Raymond Pulver IV",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.40.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raypulver/kickass-so"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0"
+  }
+}
