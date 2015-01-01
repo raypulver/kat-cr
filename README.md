@@ -3,24 +3,24 @@ This is a node module and CLI application which searches kickass.so for torrents
 
 ## Installation
 To use the CLI application, use
-`npm install -g kickass-so`
+```npm install -g kickass-so```
 If you just want to use it is as a module, install it to your project with
-`npm install --save kickass-so`
+```npm install --save kickass-so```
 
 ## CLI Application Usage
 A basic torrent search would look something like
-`kickass -c tv south park`
+```kickass -c tv south park```
 In this example, I passed the optional -c flag to specify the search category. kickass.so returns search results in sets of 25. You can specify the page # you want returned by passing the -p flag. So if you wanted to go to the second page of South Park TV torrents, you would run
-`kickass south park -c tv -p 2`
+```kickass south park -c tv -p 2```
 And that's all there is to it. The application and module orders torrents by seeders in descending order by default. Note that you do not have to surround a multi-word search query in quotes.
 
-## Node module usage
+## Module usage
 To use this module in your application, install it to your project and use
-`var kickass = require('kickass-so');`
+```var kickass = require('kickass-so');```
 You can perform a basic search with
-`kickass('search query', function (err, results) {
+```kickass('search query', function (err, results) {
   // do something with results
-})`
+})```
 If you want to do anything besides a search request for the first 25 torrents sorted by seeders, you will have to pass an object to the function instead of a string. The object can contain the following keys
 .. `search`: This will be your search query.
 .. `category`: This will be the search category.
