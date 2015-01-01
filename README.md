@@ -45,6 +45,7 @@ The JSON returned by kickass.so will be parsed into an object for you and availa
 * `results.language`: Using this module you will always get 'en-us'
 * `results.ttl`: The ttl of the response.
 * `results.list`: An array containing the torrents and their info.
+
 The information you are probably looking for will be in `results.list`. The keys of a torrent object are:
 * `title`: The title of the torrent.
 * `category`: The category of torrent.
