@@ -1,1 +1,1 @@
-module.exports = require('./lib/kickass');
+module.exports = require('./lib/kat');

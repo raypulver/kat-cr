@@ -1,6 +1,7 @@
 #!/usr/local/bin/mocha
 var expect = require('chai').expect,
-    forEachRight = require('../lib/foreach-right');
+    forEachRight = require('../lib/foreach-right'),
+    basename = require('../lib/basename');
 describe('forEach right module', function () {
   it('should halt execution after returning false', function () {
     var arr = [];
@@ -23,3 +24,8 @@ describe('forEach right module', function () {
     expect(arr[2]).to.equal(4);
   });
 });
+describe('basename module', function () {
+  it('should find the basename', function () {
+    expect(basename('/some/path/to/executable')).to.equal('executable');
+  });
+})
