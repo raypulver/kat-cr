@@ -1,7 +1,17 @@
 #!/usr/local/bin/mocha
 var expect = require('chai').expect,
     forEachRight = require('../lib/foreach-right'),
+    dns = require('dns'),
+    err,
     basename = require('../lib/basename');
+
+  before(function (done) {
+dns.resolve('www.google.com', function (e) {
+  err = e;
+  done();
+});
+  });
+
 describe('forEach right module', function () {
   it('should halt execution after returning false', function () {
     var arr = [];
@@ -29,3 +39,16 @@ describe('basename module', function () {
     expect(basename('/some/path/to/executable')).to.equal('executable');
   });
 })
+describe('test runner network connectivity', (function () {
+  if (err) return function () {
+    it('test runner must be connected to the internet', function () {
+      expect(false).to.be.true;
+    });
+  };
+  return function () {
+    it('client is connected', function () {
+      expect(1).to.eql(1);
+    });
+  };
+})());
+
