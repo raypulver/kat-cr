@@ -1,4 +1,4 @@
-#!/usr/local/bin/node --expose-gc
+#!/usr/bin/env node
 
 var basename = require('../lib/basename');
 var sprintf = require('sprintf');
@@ -29,6 +29,7 @@ var processName;
     log(sprintf(fmt, '-v,', '--version', 'display version number'));
     log(sprintf(fmt, '-h,', '--help', 'display this help'));
     log(sprintf(fmt, '-m', '--magnet', 'display magnet links instead of torrent URLs'));
+    log(sprintf(fmt, '-n', '--no-color', 'disable colored output'));
 //    log(sprintf(fmt, '-n', '--no-color', 'disable color explicitly'));
     log(sprintf(fmt, '-c [category],', '--category=[category]', 'specify category of torrent'));
     log(sprintf(fmt, '-p [page #],', '--page=[page #]', 'specify result page number'));
@@ -82,28 +83,36 @@ var kickass = require('../'),
       sorder = args.splice(i, 1)[0].match(sorderRegex)[1];
     } else if (args[i] === '--magnet' || args[i] === '-m') {
       magnet = true;
+      args.splice(i, 1);
     } else if (args[i] === '--no-color' || args[i] === '-n') {
       color = false;
+      args.splice(i, 1);
     }
   }
   search = args.join(' ');
 })();
 if (!page) page = 1;
+if (!color) neutralizeColor();
+function neutralizeColor() {
+  Object.keys(chalk.styles).forEach(function (v) {
+    chalk.styles[v].open = '';
+    chalk.styles[v].close = '';
+  });
+}
 kickass({
   search: search,
   page: page,
   category: category,
   field: field,
   sorder: sorder,
-  magnet: magnet
+  detailed: magnet
 }, function (err, results) {
   if (err) return console.log(err);
-  debugger;
   var total = results.total_results;
   forEachRight(results.list, function (v) {
     log(format('%s%s - %s%s%s', chalk.styles.cyan.open, v.category, chalk.styles.bold.open + chalk.styles.yellow.open, v.title, chalk.styles.yellow.close + chalk.styles.bold.close));
     log(format('%s%d %sSeeders %s/ %s%d %sLeechers%s', chalk.styles.bold.open + chalk.styles.green.open, v.seeds, chalk.styles.bold.close, chalk.styles.green.close, chalk.styles.bold.open + chalk.styles.red.open, v.leechs, chalk.styles.bold.close, chalk.styles.red.close));
-    log(v.torrentLink);
+    log(magnet ? v.magnetLink : v.torrentLink);
     log(format('%s%s%s', chalk.styles.magenta.open, v.pubDate, chalk.styles.magenta.close));
     log();
   });

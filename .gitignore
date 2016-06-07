@@ -9,3 +9,5 @@ pids
 
 # Dependency dir
 node_modules
+.tern-project
+
