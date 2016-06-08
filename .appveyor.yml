@@ -12,4 +12,4 @@ install:
 test_script:
   - npm test
 
-build: on
+build: off
