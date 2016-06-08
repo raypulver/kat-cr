@@ -99,7 +99,9 @@ Each item in `results.list` is actually a `KickassResult` object, which currentl
 
 ## Note
 
-The URL to Kickass Torrents is expected to change. I will try to be diligent about updating the module with the updated domain name, but in case it has not yet been updated, put the new URL into `config/kickass-url.json`
+The URL to Kickass Torrents is expected to change. In case it has not yet been updated, put the new URL into `config/kickass-url.json`
+
+Always keep your global `kat-cr` updated.
 
 
 ## Testing
