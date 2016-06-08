@@ -6,28 +6,38 @@ This is a node module and CLI application which searches kat.cr for torrents. Th
 ## Installation
 To use the CLI application, use
 
-```npm install -g kat-cr```
+```
+npm install -g kat-cr
+```
 
 This will install an executable `kickass` to your `PATH`.
 
 If you want to use it is as a module, install it to your project with
 
-```npm install --save kat-cr```
+```
+npm install --save kat-cr
+```
 
 
 ## CLI Application Usage
 
 A basic torrent search would look something like
 
-```kickass -c tv south park```
+```
+kickass -c tv south park
+```
 
 In this example, I passed the optional -c flag to specify the search category. kat.cr returns search results in sets of 25. You can specify the page # you want returned by passing the -p flag. So if you wanted to go to the second page of South Park TV torrents, you would run
 
-```kickass south park -c tv -p 2```
+```
+kickass south park -c tv -p 2
+```
 
 By default, `kickass` will display direct torrent links but if you provide the `-m` or `--magnet` option, the links returned will be the magnet links. As an example:
 
-```kickass south park -c tv -p 2 -m```
+```
+kickass south park -c tv -p 2 -m
+```
 
 The torrent titles will be displayed in bold yellow if they are torrents posted by a Kickass Torrents verified member, and there will be a purple `ELITE` qualifier before any torrents posted by a Kickass Torrents elite member.
 
@@ -36,15 +46,19 @@ And that's all there is to it. The application and module orders torrents by see
 ## Module usage
 To use this module in your application, install it to your project and use
 
-```var kickass = require('kat-cr');```
+```
+var kickass = require('kat-cr');
+```
 
 `kat-cr` uses a promise API; you can perform a basic search with
 
-```kickass('search query').then(function (results) {
+```
+kickass('search query').then(function (results) {
   // do something with results
 }, function (err) {
  // handle error
-});```
+});
+```
 
 If you want to do anything besides a search request for the first 25 torrents sorted by seeders, you will have to pass an object to the function instead of a string. The object can contain the following keys
 * `search` {string}: This will be your search query.
@@ -92,7 +106,9 @@ The URL to Kickass Torrents is expected to change. I will try to be diligent abo
 
 kat-cr is a web scraping module and thus it depends on the structure of the Kickass Torrents search response, as well as the current domain name of the Kickass torrents server. In case of updates to Kickass Torrents, running
 
-```npm test```
+```
+npm test
+```
 
 in the project directory will indicate what exactly went wrong with the attempt to convert a Kickass Torrents search response into a `KickassResultGroup` object, and contributors are invited to submit pull requests correcting the API endpoints, domain name, or CSS selectors.
 
