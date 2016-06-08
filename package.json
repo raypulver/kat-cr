@@ -1,7 +1,7 @@
 {
-  "name": "kickass-so",
-  "version": "0.1.2",
-  "description": "A library and CLI app for searching kickass.so",
+  "name": "kat-cr",
+  "version": "0.1.3",
+  "description": "A library and CLI app for searching kat.cr",
   "main": "index.js",
   "scripts": {
     "test": "mocha"

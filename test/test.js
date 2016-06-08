@@ -16,6 +16,7 @@ var expect = require('chai').expect,
     err, katErr;
 
 before(function(done) {
+  this.timeout(50000);
     Promise.all([new Promise(function(resolve, reject) {
         dns.resolve('www.google.com', function(e) {
             err = e;
