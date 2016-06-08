@@ -1,5 +1,5 @@
 # kat-cr
-![build status](https://ci.appveyor.com/api/projects/status/github/raypulver/kat-cr&retina=true)
+![build status](https://ci.appveyor.com/api/projects/status/github/raypulver/kat-cr)
 
 This is a node module and CLI application which searches kat.cr for torrents. The JSON API is no longer fully supported by kickass torrents and the RSS feed is also lacking. The browser search engine offers the most features, so that is what this application uses to search for torrents.
 
