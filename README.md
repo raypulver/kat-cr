@@ -101,7 +101,7 @@ Each item in `results.list` is actually a `KickassResult` object, which currentl
 
 The URL to Kickass Torrents is expected to change. In case it has not yet been updated, put the new URL into `config/kickass-url.json`
 
-Always keep your global `kat-cr` updated.
+Always keep your global `kat-cr` package updated.
 
 
 ## Testing
