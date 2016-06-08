@@ -61,17 +61,17 @@ kickass('search query').then(function (results) {
 ```
 
 If you want to do anything besides a search request for the first 25 torrents sorted by seeders, you will have to pass an object to the function instead of a string. The object can contain the following keys
-* `search` {string}: This will be your search query.
-* `category` {string}: This will be the search category.
-* `page` {number}: This will be the page # of the returned results.
-* `field` {string}: This will be the field by which the results are sorted, default is 'seeders'. Other possibilities include 'time\_add', 'files\_count', 'size', and 'leechers'.
-* `sorder` {string}: This will be the order the results are displayed in, default is 'desc'. Alternatively you can use 'asc'.
+* `search` {string}: The search query
+* `category` {string}: The search category
+* `page` {number}: The page # of the returned results
+* `field` {string}: The field by which the results are sorted, default is 'seeders'. Other possibilities include 'time\_add', 'files\_count', 'size', and 'leechers'
+* `sorder` {string}: The order the results are displayed in, default is 'desc'. Alternatively you can use 'asc'
 
 The object resolved by this promise is designed to mimic the JSON response returned by the currently useless Kickass Torrent JSON API, but the actual object is a custom `KickassResultGroup` object, which at this stage does not have any methods on its prototype, but contains some properties relevant to the entire search result:
-* `results.total_results` {number}: The total amount of torrent results.
-* `results.link` {string}: Always 'http://kat.cr'.
+* `results.total_results` {number}: The total amount of torrent results
+* `results.link` {string}: Always 'http://kat.cr'
 * `results.language` {string}: Using this module you will always get 'en-us'
-* `results.list` {Array}: An array containing the torrents and their info.
+* `results.list` {Array}: An array containing the torrents and their info
 
 The bulk of the information will be in `results.list`. The properties of a torrent object are:
 * `title` {string}: The title of the torrent
