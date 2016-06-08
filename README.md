@@ -93,7 +93,7 @@ The bulk of the information will be in `results.list`. The properties of a torre
 
 Each item in `results.list` is actually a `KickassResult` object, which currently has the following methods on its prototype:
 
-* `KickassResult#getComments()`: Return a promise that resolves with an array of comment objects, which have an `owner` and a `comment` property representing the screen name of the comment poster and the content of the comment, respectively.
+* `KickassResult#getComments()`: Return a promise that resolves with an array of comment objects, which have an `owner` and a `comment` property representing the screen name of the comment poster and the content of the comment, respectively
 * `KickassResult#getDetails()`: Make an HTTP request to the dedicated webpage associated with the torrent result and return a promise which resolves with an object containing additional details about the torrent. At this stage the only additional detail provided by the resolved object is stored in the `description` property, which contains the text-only version of the torrent description
 
 
