@@ -1,7 +1,7 @@
 # kat-cr
 ![build status](https://ci.appveyor.com/api/projects/status/github/raypulver/kat-cr)
 
-kar-cr is a simple, flexible CLI application and node module which searches kat.cr for torrents. The JSON API is no longer fully supported by Kickass Torrents and the RSS feed is also lacking. The primary browser-based search engine provided by Kickass Torrents offers the most features, so that is what this application uses to search for torrents.
+kat-cr is a simple, flexible CLI application and node module which searches kat.cr for torrents. The JSON API is no longer fully supported by Kickass Torrents and the RSS feed is also lacking. The primary browser-based search engine provided by Kickass Torrents offers the most features, so that is what this application uses to search for torrents.
 
 
 ## Installation
