@@ -1,7 +1,7 @@
 # kat-cr
 ![build status](https://ci.appveyor.com/api/projects/status/github/raypulver/kat-cr)
 
-This is a node module and CLI application which searches kat.cr for torrents. The JSON API is no longer fully supported by kickass torrents and the RSS feed is also lacking. The browser search engine offers the most features, so that is what this application uses to search for torrents.
+This is a node module and CLI application which searches kat.cr for torrents. The JSON API is no longer fully supported by Kickass Torrents and the RSS feed is also lacking. The browser search engine offers the most features, so that is what this application uses to search for torrents.
 
 
 ## Installation
@@ -13,7 +13,7 @@ npm install -g kat-cr
 
 This will install an executable `kickass` to your `PATH`.
 
-If you want to use it is as a module, install it to your project with
+To use as a module, install to your project with
 
 ```
 npm install --save kat-cr
@@ -28,7 +28,7 @@ A basic torrent search would look something like
 kickass -c tv south park
 ```
 
-In this example, I passed the optional -c flag to specify the search category. kat.cr returns search results in sets of 25. You can specify the page # you want returned by passing the -p flag. So if you wanted to go to the second page of South Park TV torrents, you would run
+In this example, the optional -c flag was passed to specify the search category. As of this writing, kat.cr returns search results in sets of 25, and caps results at 10000. You can specify the page # you want returned by passing the -p flag. So if you wanted to go to the second page of South Park TV torrents, you would run
 
 ```
 kickass south park -c tv -p 2
@@ -42,7 +42,7 @@ kickass south park -c tv -p 2 -m
 
 The torrent titles will be displayed in bold yellow if they are torrents posted by a Kickass Torrents verified member, and there will be a purple `ELITE` qualifier before any torrents posted by a Kickass Torrents elite member.
 
-And that's all there is to it. The application and module orders torrents by seeders in descending order by default. Note that you do not have to surround a multi-word search query in quotes.
+And that's all there is to it. The application and module orders torrents by seeders in descending order by default. To change this behavior, pass the -f/--field flag or -s/--sorder flag (details on the possible values for these options below). Note that you do not have to surround a multi-word search query in quotes.
 
 ## Module usage
 To use this module in your application, install it to your project and use
@@ -51,7 +51,7 @@ To use this module in your application, install it to your project and use
 var kickass = require('kat-cr');
 ```
 
-`kat-cr` uses a promise API; you can perform a basic search with
+`kat-cr` uses a Promise API; you can perform a basic search with
 
 ```
 kickass('search query').then(function (results) {
@@ -96,6 +96,25 @@ Each item in `results.list` is actually a `KickassResult` object, which currentl
 
 * `KickassResult#getComments()`: Return a promise that resolves with an array of comment objects, which have an `owner` and a `comment` property representing the screen name of the comment poster and the content of the comment, respectively
 * `KickassResult#getDetails()`: Make an HTTP request to the dedicated webpage associated with the torrent result and return a promise which resolves with an object containing additional details about the torrent. At this stage the only additional detail provided by the resolved object is stored in the `description` property, which contains the text-only version of the torrent description
+
+
+## Example
+
+Log the magnet link and get the comments for the most seeded South Park torrent:
+
+```
+kickass({
+  search: 'south park',
+  field: 'seeders',
+  sorder: 'desc',
+  category: 'tv'
+}).then(function (results) {
+  console.log(results.list[0].magnetLink);
+  results.list[0].getComments().then(function (comments) {
+    // do something with comments
+  });
+});
+```
 
 
 ## Note
