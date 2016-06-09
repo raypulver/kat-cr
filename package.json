@@ -1,6 +1,6 @@
 {
   "name": "kat-cr",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "A library and CLI app for searching kat.cr",
   "main": "index.js",
   "scripts": {
