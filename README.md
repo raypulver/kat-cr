@@ -1,7 +1,7 @@
 # kat-cr
 ![build status](https://ci.appveyor.com/api/projects/status/github/raypulver/kat-cr)
 
-This is a node module and CLI application which searches kat.cr for torrents. The JSON API is no longer fully supported by Kickass Torrents and the RSS feed is also lacking. The browser search engine offers the most features, so that is what this application uses to search for torrents.
+kar-cr is a simple, flexible CLI application and node module which searches kat.cr for torrents. The JSON API is no longer fully supported by Kickass Torrents and the RSS feed is also lacking. The primary browser-based search engine provided by Kickass Torrents offers the most features, so that is what this application uses to search for torrents.
 
 
 ## Installation
@@ -28,7 +28,7 @@ A basic torrent search would look something like
 kickass -c tv south park
 ```
 
-In this example, the optional -c flag was passed to specify the search category. As of this writing, kat.cr returns search results in sets of 25, and caps results at 10000. You can specify the page # you want returned by passing the -p flag. So if you wanted to go to the second page of South Park TV torrents, you would run
+In this example, the optional -c flag was passed to specify the search category.kat.cr returns search results in sets of 25, and caps results at 10000. You can specify the page # you want returned by passing the -p flag. So if you wanted to go to the second page of South Park TV torrents, you would run
 
 ```
 kickass south park -c tv -p 2
