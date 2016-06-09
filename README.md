@@ -61,7 +61,7 @@ kickass('search query').then(function (results) {
 });
 ```
 
-If you want to do anything besides a search request for the first 25 torrents sorted by seeders, you will have to pass an object to the function instead of a string. The object can contain the following keys
+You can perform an advanced search by passing an object to the function instead of a string. The object can contain the following keys
 * `search` {string}: The search query
 * `category` {string}: The search category
 * `page` {number}: The page # of the returned results
