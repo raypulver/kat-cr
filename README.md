@@ -68,7 +68,7 @@ If you want to do anything besides a search request for the first 25 torrents so
 * `field` {string}: The field by which the results are sorted, default is 'seeders'. Other possibilities include 'time\_add', 'files\_count', 'size', and 'leechers'
 * `sorder` {string}: The order the results are displayed in, default is 'desc'. Alternatively you can use 'asc'
 
-The object resolved by this promise is designed to mimic the JSON response returned by the currently useless Kickass Torrent JSON API, but the actual object is a custom `KickassResultGroup` object, which at this stage does not have any methods on its prototype, but contains some properties relevant to the entire search result:
+The object resolved by this promise is designed to mimic the JSON response returned by the currently feature-deficient Kickass Torrent JSON API, but the actual object is a custom `KickassResultGroup` object, which at this stage does not have any methods on its prototype, but contains some properties relevant to the entire search result:
 * `results.total_results` {number}: The total amount of torrent results
 * `results.link` {string}: Always 'http://kat.cr'
 * `results.language` {string}: Using this module you will always get 'en-us'
