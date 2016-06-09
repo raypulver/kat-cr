@@ -93,6 +93,11 @@ if (args.debug) {
   log(args);
   require('request-debug')(require('request'));
 }
+if (!args.remaining.length) {
+  log(sprintf('%s: %s', process.title, 'Must supply a search query'));
+  help();
+  exit(1);
+}
 kickass({
   search: args.remaining.join(' '),
   page: args.page,

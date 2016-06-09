@@ -50,6 +50,9 @@ describe('argv parser', function () {
     short: 'f',
     type: null
   }];
+  it('should permute arguments', function () {
+    expect(ArgvParser._permuteArgv(['-abc'])).to.eql(['-a', '-b', '-c']);
+  });
   it('should parse long options or short options', function () {
     var parser = ArgvParser(opts);
     var result = parser('node kickass --option=value --flag'.split(/\s+/));
