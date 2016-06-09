@@ -11,7 +11,9 @@ var expect = require('chai').expect,
   URLS = require('../config/kickass-urls'),
   uri = require('uri-js'),
   fetch = require('../lib/fetch'),
+  errors = require('../lib/errors'),
   merge = require('../lib/merge'),
+  ArgvParser = require('../lib/argv'),
   searchPageResult,
   err, katErr, gotAnyResults;
 
@@ -38,6 +40,30 @@ before(function(done) {
   });
 });
 
+describe('argv parser', function () {
+  var opts = [{
+    long: 'option',
+    short: 'o',
+    type: 'string'
+  }, {
+    long: 'flag',
+    short: 'f',
+    type: null
+  }];
+  it('should parse long options or short options', function () {
+    var parser = ArgvParser(opts);
+    var result = parser('node kickass --option=value --flag'.split(/\s+/));
+    expect(result.flag).to.be.true;
+    expect(result.option).to.equal('value');
+    result = parser('node kickass -o value -f'.split(/\s+/));
+    expect(result.option).to.equal('value');
+    expect(result.flag).to.be.true;
+  });
+  it('should throw when a required argument is not passed', function () {
+    var parser = ArgvParser(opts);
+    expect(parser.bind(null, 'node kickass -o -f'.split(/\s+/))).to.throw(/requires an argument/);
+  });
+});
 describe('uri merge module', function() {
   it('should combine any number of URI segments', function() {
     expect(merge('http://', 'www.google.com', 'path')).to.equal('http://www.google.com/path');
