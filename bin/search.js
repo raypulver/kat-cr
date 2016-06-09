@@ -108,7 +108,7 @@ kickass({
     log(format('%s%s%s', chalk.styles.magenta.open, v.pubDate, chalk.styles.magenta.close));
     log();
   });
-  log(format('%sDisplaying torrents %s%d %s- %s%d %sout of %s%d%s total.%s', chalk.styles.cyan.open, chalk.styles.yellow.open, PER_PAGE * (page - 1) + 1, chalk.styles.bold.close, chalk.styles.bold.open, Math.min(PER_PAGE * page, total), chalk.styles.bold.close + chalk.styles.cyan.open, chalk.styles.bold.open + chalk.styles.magenta.open, total, chalk.styles.bold.close + chalk.styles.cyan.open, chalk.styles.cyan.close));
+  log(format('%sDisplaying torrents %s%d %s- %s%d %sout of %s%d%s total.%s', chalk.styles.cyan.open, chalk.styles.yellow.open, PER_PAGE * (args.page - 1) + 1, chalk.styles.bold.close, chalk.styles.bold.open, Math.min(PER_PAGE * args.page, total), chalk.styles.bold.close + chalk.styles.cyan.open, chalk.styles.bold.open + chalk.styles.magenta.open, total, chalk.styles.bold.close + chalk.styles.cyan.open, chalk.styles.cyan.close));
 }, function(err) {
   console.log(err.stack);
 });
