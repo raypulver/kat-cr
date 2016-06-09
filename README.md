@@ -28,7 +28,7 @@ A basic torrent search would look something like
 kickass -c tv south park
 ```
 
-In this example, the optional -c flag was passed to specify the search category.kat.cr returns search results in sets of 25, and caps results at 10000. You can specify the page # you want returned by passing the -p flag. So if you wanted to go to the second page of South Park TV torrents, you would run
+In this example, the optional -c flag was passed to specify the search category. kat.cr returns search results in sets of 25, and caps results at 10000. You can specify the page # you want returned by passing the -p flag. So if you wanted to go to the second page of South Park TV torrents, you would run
 
 ```
 kickass south park -c tv -p 2
@@ -60,6 +60,7 @@ kickass('search query').then(function (results) {
  // handle error
 });
 ```
+
 
 You can perform an advanced search by passing an object to the function instead of a string. The object can contain the following keys
 * `search` {string}: The search query
