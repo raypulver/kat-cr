@@ -3,10 +3,8 @@
 "use strict";
 
 const path = require('path'),
-  sprintf = require('sprintf'),
-  color = require('supports-color'),
+  hasColor = require('supports-color'),
   kickass = require('../'),
-  format = require('util').format,
   chalk = require('chalk'),
   ArgvParser = require('../lib/argv'),
   UsageGenerator = require('../lib/usage'),
@@ -90,10 +88,7 @@ if (args.version) {
   log(require('../package').version);
   exit(0);
 }
-if (!args.page) args = Object.assign({
-  page: 1
-}, args);
-if (args['no-color'] || !color) util.neutralizeColor();
+if (args['no-color'] || !hasColor) util.neutralizeColor();
 if (args.debug) {
   log(args);
   require('request-debug')(require('request'));
