@@ -27,16 +27,19 @@ const opts = [{
   type: 'number',
   short: 'p',
   long: 'page',
+  defaultValue: 1,
   description: 'specify page number of results'
 }, {
   type: 'string',
   short: 'f',
   long: 'field',
+  defaultValue: 'seeders',
   description: 'specify field to order results by'
 }, {
   type: 'string',
   short: 's',
   long: 'sorder',
+  defaultValue: 'desc',
   description: 'specify sort order (asc or desc)'
 }, {
   type: null,
@@ -87,7 +90,9 @@ if (args.version) {
   log(require('../package').version);
   exit(0);
 }
-args = Object.assign({ page: 1 }, args);
+if (!args.page) args = Object.assign({
+  page: 1
+}, args);
 if (args['no-color'] || !color) util.neutralizeColor();
 if (args.debug) {
   log(args);
@@ -98,25 +103,32 @@ if (!args.remaining.length) {
   help();
   exit(1);
 }
+
+function maybeEliteTag(isElite) {
+  if (isElite) return chalk.magenta(chalk.bold('ELITE '));
+  return '';
+}
+
+function maybeBold(msg, isVerified) {
+  if (isVerified) return chalk.bold(msg);
+  return msg;
+}
+
 kickass({
   search: args.remaining.join(' '),
-  page,
-  category,
-  field,
-  sorder
-} = args).then(function(results) {
-  let total = results.total_results,
-      { cyan, green, red, yellow, magenta, bold } = chalk.styles;
+  page: args.page,
+  category: args.category,
+  field: args.field,
+  sorder: args.sorder
+}).then(function(results) {
   forEachRight(results.list, function(v, i) {
-    let elitePrefix = `${magenta.open}${bold.open}ELITE ${magenta.open}${bold.open}`;
-    let prefix = `${v.elite ? elitePrefix : ''}${v.verified ? bold.open : ''}${yellow.open}`,
-    log(`${cyan.open}${v.category}${cyan.close} - ${prefix}${v.title}${yellow.close}${v.verified ? bold.close : ''}`);
-    log(`${green.open}${bold.open}${v.seeds}${bold.close} Seeders${green.close} / ${red.open}${bold.open}${v.leechs}${bold.close} Leechers${red.close}`);
+    log(`${chalk.cyan(v.category)} ${chalk.cyan('-')} ${maybeEliteTag(v.elite)}${chalk.yellow(maybeBold(v.title, v.verified))}`);
+    log(`${chalk.green(chalk.bold(v.seeds))} ${chalk.green('Seeders')} / ${chalk.red(chalk.bold(v.leechs))} ${chalk.red('Leechers')}`);
     log(args.magnet ? v.magnetLink : v.torrentLink);
-    log(`${magenta.open}${v.pubDate}${magenta.close}`);
+    log(chalk.magenta(v.pubDate));
     log();
   });
-  log(`${yellow.open}${cyan.open}Displaying torrents${cyan.close} ${PER_PAGE * (args.page - 1) + 1} - ${bold.open}${Math.min(PER_PAGE * args.page, total)}${bold.close} ${cyan.open}out of${cyan.close} ${bold.open}${magenta.open}${total}{magenta.close}{bold.close} {cyan.open}total.${cyan.close}`);
+  log(`${chalk.cyan('Displaying torrents')} ${chalk.bold(chalk.yellow(String(PER_PAGE * (args.page - 1) + 1) + ' - ' + String(Math.min(PER_PAGE * args.page, results.total_results))))} ${chalk.cyan('out of')} ${chalk.bold(chalk.magenta(String(results.total_results)))} ${chalk.cyan('total')}`);
 }, function(err) {
-  console.log(err.stack);
+  log(`${process.title}: ${err.message}`);
 });
