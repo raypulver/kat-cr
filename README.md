@@ -88,7 +88,7 @@ The bulk of the information will be in `results.list`. The properties of a torre
 * `peers` {number}: The amount of peers associated with the torrent
 * `seeds` {number}: The amount of seeders associated the torrent
 * `leechs` {number}: The amount of leeches downloading the torrent
-* `size` {string}: The size of the torrent with a qualifier (KB, MB, etc.)
+* `size` {number}: The size of the files provided by the torrent, in bytes
 * `verified` {boolean}: Whether or not the torrent was posted by a Kickass Torrents verified user
 * `elite` {boolean}: Whether or not the torrent was posted by a Kickass Torrents elite user
 * `id` {string}: The torrent ID on kat.cr that can be used to call API functions

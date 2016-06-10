@@ -91,7 +91,7 @@ if (args.version) {
 if (args['no-color'] || !hasColor) util.neutralizeColor();
 if (args.debug) {
   log(args);
-  require('request-debug')(require('request'));
+  require('request-debug')(require('../lib/fetch')._request);
 }
 if (!args.remaining.length) {
   log(`${process.title}: Must supply a search query`);

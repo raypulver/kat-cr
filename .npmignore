@@ -1,3 +1,4 @@
 *.swp
 npm-debug.log
 .tern-project
+doc
