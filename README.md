@@ -137,6 +137,16 @@ in the project directory will indicate what exactly went wrong with the attempt 
 
 Make sure `mocha` is installed globally, and that you run `npm install` in the project directory before attempting to run the tests.
 
+## Documentation
+
+The source code is fully documented. To build the documentation, make sure the `grunt-cli` package is installed globally and that you have run `npm install` in the project directory, then run
+
+```
+grunt
+```
+
+in the project directory. To view the source code documentation, open up doc/index.html in your favorite web browser.
+
 
 ## License
 
