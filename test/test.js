@@ -49,9 +49,15 @@ describe('argv parser', function () {
     long: 'flag',
     short: 'f',
     type: null
+  }, {
+    short: 'p',
+    long: 'poption',
+    type: 'number'
   }];
+  ArgvParser._buildRegExps(opts);
   it('should permute arguments', function () {
-    expect(ArgvParser._permuteArgv(['-abc'])).to.eql(['-a', '-b', '-c']);
+    expect(ArgvParser._permuteArgv(['-abc'], opts)).to.eql(['-a', '-b', '-c']);
+    expect(ArgvParser._permuteArgv(['-p2', '-abc', '--woop'], opts)).to.eql(['-p', '2', '-a', '-b', '-c', '--woop']);
   });
   it('should parse long options or short options', function () {
     var parser = ArgvParser(opts);
