@@ -1,0 +1,49 @@
+[{ 
+  "type":        "string",
+  "short":       "c",
+  "long":        "category",
+  "description": "specify torrent category"
+}, { 
+  "type":         "number",
+  "short":        "p",
+  "long":         "page",
+  "defaultValue": 1,
+  "description":  "specify page number of results"
+}, { 
+  "type":         "string",
+  "short":        "f",
+  "long":         "field",
+  "defaultValue": "seeders",
+  "description":  "specify field to order results by"
+}, { 
+  "type":         "string",
+  "short":        "s",
+  "long":         "sorder",
+  "defaultValue": "desc",
+  "description":  "specify sort order (asc or desc)"
+}, { 
+  "type":        null,
+  "short":       "m",
+  "long":        "magnet",
+  "description": "output magnet links instead"
+}, { 
+  "type":        null,
+  "short":       "d",
+  "long":        "debug",
+  "description": "enable debug output"
+}, { 
+  "type":        null,
+  "short":       "h",
+  "long":        "help",
+  "description": "display this help and exit"
+}, { 
+  "type":        null,
+  "short":       "n",
+  "long":        "no-color",
+  "description": "disable colored output"
+}, { 
+  "type":        null,
+  "short":       "v",
+  "long":        "version",
+  "description": "display version number and exit"
+}]
